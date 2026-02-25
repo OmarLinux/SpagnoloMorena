@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdfaf5;
+  --foreground: #1e293b;
+  
+  /* Game Palette */
+  --game-orange: #ff8c42;
+  --game-orange-hover: #f97316;
+  --joy-blue: #3b82f6;
+  --joy-blue-hover: #2563eb;
+  --success-green: #22c55e;
+  --soft-blue: #eff6ff;
+  --card-bg: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-game-orange: var(--game-orange);
+  --color-joy-blue: var(--joy-blue);
+  --color-success-green: var(--success-green);
+  --color-soft-blue: var(--soft-blue);
+  --color-card-bg: var(--card-bg);
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Utilities for a "Happy" UI */
+.btn-primary {
+  @apply px-6 py-3 bg-[var(--game-orange)] text-white font-bold rounded-2xl 
+         shadow-[0_4px_0_0_#d97706] hover:translate-y-[2px] hover:shadow-[0_2px_0_0_#d97706] 
+         active:translate-y-[4px] active:shadow-none transition-all duration-100;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 bg-[var(--joy-blue)] text-white font-bold rounded-2xl 
+         shadow-[0_4px_0_0_#1d4ed8] hover:translate-y-[2px] hover:shadow-[0_2px_0_0_#1d4ed8] 
+         active:translate-y-[4px] active:shadow-none transition-all duration-100;
+}
+
+.card-fancy {
+  @apply bg-white rounded-3xl p-6 shadow-xl border-4 border-soft-blue;
+}
+
+@keyframes bounce-subtle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-mascot {
+  animation: bounce-subtle 3s ease-in-out infinite;
 }
